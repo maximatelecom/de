@@ -1,0 +1,10 @@
+[grpc]
+server_addr = ":9097" #grpc server addr
+
+[crypto]
+key = "1234567891234567" #crypto key (16 symbols)
+init_vector = "123456123456" # initialization vector for AES (12 symbols)
+
+[log]
+level = "debug" #log level to stdout/syslog
+syslog = "local" # syslog server address
