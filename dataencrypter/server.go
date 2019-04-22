@@ -22,7 +22,7 @@ func NewServer(cryptoKey, initVector []byte) *Server {
 	}
 }
 
-//Encrypt decrypts encrypted mac
+//Encrypt encrypts given data
 func (s *Server) Encrypt(ctx context.Context, req *EncryptRequest) (*EncryptResponse, error) {
 	encryptedData, err := encrypt.Encrypt([]byte(req.GetData()), s.cryptoKey, s.initVector)
 	if err != nil {
@@ -39,6 +39,7 @@ func (s *Server) Encrypt(ctx context.Context, req *EncryptRequest) (*EncryptResp
 	return &EncryptResponse{EncryptedData: encodedData}, nil
 }
 
+// Decrypt decrypts encrypted data
 func (s *Server) Decrypt(ctx context.Context, req *DecryptRequest) (*DecryptResponse, error) {
 	log.
 		WithField("request", req.EncryptedData).
